@@ -1,8 +1,15 @@
 import { BaseResource } from "../baseResource";
-import type { Photo } from "./types";
+import type { Photo, PhotoParams } from "./types";
 
 export class PhotosResource extends BaseResource {
-  list() {
+  list(params: PhotoParams) {
+    const { page, per_page } = params;
+
+    const queryParams: Record<string, string | number> = {};
+
+    if (page) queryParams.page = page;
+    if (per_page) queryParams.per_page = per_page;
+
     return this.req<Array<Photo>>({ method: "GET" })
   }
 

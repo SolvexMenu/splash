@@ -91,3 +91,8 @@ export interface Photo {
   links: PhotoLinks;
   user: User;
 }
+
+export interface PhotoParams {
+  page?: number | 1;
+  per_page?: number | 10;
+}
